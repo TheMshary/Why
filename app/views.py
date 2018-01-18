@@ -8,6 +8,7 @@ from rest_framework.permissions import AllowAny
 from app.serializers import ScoreSerializer
 from app.models import Score, Answer
 import json
+
 # Create your views here.
 class ReactAppView(APIView):
 
@@ -27,10 +28,13 @@ class LeaderboardView(APIView):
 		return Response(data, status=status.HTTP_200_OK)
 
 	def post(self, request):
+		print("REQUEST.DATA: ")
+		print(request.data)
 		score = request.data.get("score")
 		statement = request.data.get("statement")
-		answers = request.data.get("answer_set")
-
+		answers = json.loads(request.data.get("answer_set"))
+		print("ANSWERS: ")
+		print(answers)
 		i = 0
 		while i < len(answers):
 			answers[i].pop('id', None)
