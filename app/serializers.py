@@ -36,6 +36,6 @@ class ScoreSerializer(serializers.ModelSerializer):
 		for answer_data in answers_data:
 			# print("ANSWER_DATA: ")
 			# print(answer_data.get("answer"))
-			Answer.objects.create(answer=answer_data.get("answer"))
+			Answer.objects.create(score=score, answer=answer_data.get("answer"))
 
 		return score

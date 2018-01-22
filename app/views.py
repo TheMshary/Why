@@ -25,6 +25,9 @@ class LeaderboardView(APIView):
 		data = {
 			"top": ScoreSerializer(leaderboard, many=True).data
 		}
+		print("LEADERBOARD: ")
+		for score in data.get('top'):
+			print(score)
 		return Response(data, status=status.HTTP_200_OK)
 
 	def post(self, request):
